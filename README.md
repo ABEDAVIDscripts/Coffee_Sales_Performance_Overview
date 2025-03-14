@@ -76,7 +76,7 @@ This project aims to analyze a coffee shop's sales data using MySQL for data cle
 4. Daily Sales Analysis with Average Line:
     - display daily sales for the selected month with a line chart.
     - incorporate an average line on the chart to represent the average daily sales
-    - demarcate exceeding or falling below the average sales to identify exceptional sales days
+    - show whether it exceeding or falling below the average sales to identify exceptional sales days
 
 5. Sales Analysis by Product Category:
     - analyze sales perfomance across differenct product categories.
@@ -195,11 +195,11 @@ SELECT * FROM COFFEE_WORKSHEET;
 <BR>
 
 
-### Part B: EXPLORATORY DATA ANALYSIS ON BUSINESS QUESTION
+### Part B: EXPLORATORY DATA ANALYSIS ON BUSINESS QUESTIONS
 ### SECTION A: KPI'S REQUIREMENTS
 
-#### 1: Total Sales Analysis
-#### 1A: total sales for each respective month
+#### 1. Total Sales Analysis
+#### 1A. total sales for each respective month
 ``` SQL
 SELECT
   DATE_FORMAT(transaction_date, '%Y') AS Years,
@@ -209,7 +209,7 @@ FROM coffee_worksheet
 GROUP BY 1,2    ;
 ```
 
-#### 1B: month-on-month increase or decrease in sales
+#### 1B. month-on-month increase or decrease in sales
 ```SQL
 WITH monthly_table AS
   (SELECT
@@ -224,7 +224,7 @@ SELECT
 FROM Monthly_table   ;
 ```
 
-1C: percentage difference in sales between the selected month and the previous month
+1C. percentage difference in sales between the selected month and the previous month
 ``` SQL
 WITH monthly_table AS
   (SELECT
@@ -244,7 +244,7 @@ FROM Monthly_table   ;
 <BR>
 
 #### 2. Total Order Analysis
-#### 2A: total number of orders for each respective month
+#### 2A. total number of orders for each respective month
 
 ```SQL
 SELECT 
@@ -255,7 +255,7 @@ FROM coffee_worksheet
 GROUP BY 1,2;
 ```
 
-#### 2B: month-on-month increase or decrease in the number of orders.
+#### 2B. month-on-month increase or decrease in the number of orders.
 
 ```SQL
 WITH Order_table AS
@@ -271,7 +271,7 @@ SELECT
 FROM Order_table;
 ```
 
-#### 2C: percentage difference on the slected month and the previous month. 
+#### 2C. percentage difference on the slected month and the previous month. 
 
 ```SQL
 WITH Order_table AS
@@ -292,7 +292,7 @@ FROM Order_table;
 <BR>
 
 #### 3: Total Quantity Sold Analysis
-#### 3A: total quantity sold for each respective month.
+#### 3A. total quantity sold for each respective month.
 
 ```SQL
 SELECT 
@@ -303,7 +303,7 @@ FROM coffee_worksheet
 GROUP BY 1,2;
 ```
 
-#### 3B: month-on-month increase
+#### 3B. month-on-month increase
 
 ```SQL
 WITH Monthly_QTY AS
@@ -319,8 +319,8 @@ SELECT
 FROM Monthly_qty        ;
 ```
 
-#### 3C: percentage difference btw selected month and the previous month.
-```
+#### 3C. percentage difference btw selected month and the previous month.
+```SQL
 WITH Monthly_QTY AS
   (SELECT 
   DATE_FORMAT(transaction_date, '%Y') AS Years,
@@ -403,7 +403,7 @@ FROM Lag_Table
 ORDER BY Month_count, store_location  ;
 ```
 
-####3C. MoM sales increase or decrease for each store location to identify trends. 
+#### 3C. MoM sales increase or decrease for each store location to identify trends. 
 ```SQL
 WITH Coffee_Table AS 
   (SELECT DISTINCT
@@ -454,4 +454,63 @@ SELECT
 FROM coffee_table;
 ```
 
+#### 4C. show whether it exceeding or falling below the average sales to identify exceptional sales days
+```sql
+WITH coffee_table AS
+	(SELECT     
+		DATE_FORMAT(transaction_date, '%M') AS Months,
+        MONTH(transaction_date) AS Month_count,
+		DAY(transaction_date) AS Days,
+		ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+	FROM coffee_worksheet
+    GROUP BY 1,2,3),
+AVG_Table AS	
+    (SELECT 
+		Months, Month_count, Days, Total_sales,
+		ROUND(AVG(Total_sales) OVER (PARTITION BY Month_count)) AS Month_AVG 
+	FROM coffee_table)
+SELECT
+	Months, Days, Total_sales, Month_AVG,
+    CASE
+		WHEN Total_sales > Month_avg Then 'Above_AVG'
+		WHEN Total_sales < Month_avg Then 'Below_AVG'
+        ELSE 'Average'
+	END AS Performance
+FROM AVG_Table
+ORDER BY month_count, days;
+```
 
+
+#### 5. Sales Analysis by Product Category
+```SQL
+select 
+	product_category, 
+    ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+from coffee_worksheet
+GROUP BY 1
+ORDER BY 2 DESC;
+```
+
+
+#### 6. Top 10 Products by Sales
+```SQL
+SELECT
+	product_type, 
+    ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+FROM coffee_worksheet
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10;
+```
+
+
+#### 7. Sales Analysis by Days and Hours
+```
+SELECT 
+		DATE_FORMAT(transaction_date, '%M') AS Months,
+		DAY(transaction_date) AS Days,
+		DATE_FORMAT(transaction_time, '%H') AS Hours,
+		ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+FROM coffee_worksheet
+GROUP BY 1,2,3;
+```
