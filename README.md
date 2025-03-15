@@ -93,7 +93,7 @@ This project aims to analyze a coffee shop's sales data using MySQL for data cle
 <br>
 <br>
 
-## Solution SQL Section: Data Processing
+## SQL Solution Section: Data Processing
 ### Part A: Data Extraction and Cleaning
 
 #### 1: Create table coffee_sales
@@ -458,22 +458,22 @@ FROM coffee_table;
 ```sql
 WITH coffee_table AS
 	(SELECT     
-		DATE_FORMAT(transaction_date, '%M') AS Months,
-        MONTH(transaction_date) AS Month_count,
-		DAY(transaction_date) AS Days,
-		ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
-	FROM coffee_worksheet
-    GROUP BY 1,2,3),
+	DATE_FORMAT(transaction_date, '%M') AS Months,
+	MONTH(transaction_date) AS Month_count,
+	DAY(transaction_date) AS Days,
+	ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+FROM coffee_worksheet
+GROUP BY 1,2,3),
 AVG_Table AS	
-    (SELECT 
-		Months, Month_count, Days, Total_sales,
-		ROUND(AVG(Total_sales) OVER (PARTITION BY Month_count)) AS Month_AVG 
-	FROM coffee_table)
+	(SELECT 
+	Months, Month_count, Days, Total_sales,
+	ROUND(AVG(Total_sales) OVER (PARTITION BY Month_count)) AS Month_AVG 
+FROM coffee_table)
 SELECT
 	Months, Days, Total_sales, Month_AVG,
-    CASE
-		WHEN Total_sales > Month_avg Then 'Above_AVG'
-		WHEN Total_sales < Month_avg Then 'Below_AVG'
+	CASE
+	WHEN Total_sales > Month_avg Then 'Above_AVG'
+	WHEN Total_sales < Month_avg Then 'Below_AVG'
         ELSE 'Average'
 	END AS Performance
 FROM AVG_Table
@@ -483,10 +483,10 @@ ORDER BY month_count, days;
 
 #### 5. Sales Analysis by Product Category
 ```SQL
-select 
+SELECT 
 	product_category, 
-    ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
-from coffee_worksheet
+	ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+FROM coffee_worksheet
 GROUP BY 1
 ORDER BY 2 DESC;
 ```
@@ -496,7 +496,7 @@ ORDER BY 2 DESC;
 ```SQL
 SELECT
 	product_type, 
-    ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+	ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
 FROM coffee_worksheet
 GROUP BY 1
 ORDER BY 2 DESC
@@ -505,12 +505,46 @@ LIMIT 10;
 
 
 #### 7. Sales Analysis by Days and Hours
-```
+```sql
 SELECT 
-		DATE_FORMAT(transaction_date, '%M') AS Months,
-		DAY(transaction_date) AS Days,
-		DATE_FORMAT(transaction_time, '%H') AS Hours,
-		ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
+	DATE_FORMAT(transaction_date, '%M') AS Months,
+	DAY(transaction_date) AS Days,
+	DATE_FORMAT(transaction_time, '%H') AS Hours,
+	ROUND(SUM(unit_price * transaction_qty)) AS Total_Sales
 FROM coffee_worksheet
 GROUP BY 1,2,3;
 ```
+
+<BR>
+<BR>
+
+
+## Power BI Solution Section: Visualization and Dashboard
+### STEP 1: Import and transform data
+- In Transform Data, check for data quality under View Tab: using column quality and distribution
+- Close and apply
+- Set the transaction_time datatype to hh:nn:ss
+
+<BR>
+
+### STEP 2: Create A Date Table
+```DAX
+DateTable = ADDCOLUMNS (
+	CALENDAR ( MIN('YourDataTable'[Date]), MAX('YourDataTable'[Date]) ),
+	"Year", YEAR([Date]),
+	"Month", FORMAT([Date], "MMMM"),
+	"MonthNum", MONTH([Date]),
+	"Quarter", "Q" & FORMAT([Date], "Q"),
+	"Weekday", FORMAT([Date], "dddd"),
+	"WeekdayNum", WEEKDAY([Date], 2) )
+```
+![Screenshot (1692)](https://github.com/user-attachments/assets/3472420b-cf4d-4ee9-a132-1c086d0cdf9b)
+
+
+<BR>
+
+### STEP 3: Data Modeling
+- Add a relationship between Date Table and Transactions table
+- Under Model View, connect the 2 tables
+- Drag the date in the Date Table on the transaction_date in Transactions Table
+- The relationship is Many to One.
