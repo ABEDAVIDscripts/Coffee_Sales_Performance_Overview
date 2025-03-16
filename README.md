@@ -551,7 +551,7 @@ DateTable = ADDCOLUMNS (
 	"Weekday", FORMAT([Date], "dddd"),
 	"WeekdayNum", WEEKDAY([Date], 2) )
 ```
-![DateTable](https://drive.google.com/file/d/1rTnjm9BnLDKKuE60PFjlnxMw6zsyiohR/view?usp=sharing)
+[DateTable](https://drive.google.com/file/d/1rTnjm9BnLDKKuE60PFjlnxMw6zsyiohR/view?usp=sharing)
 
 
 <BR>
