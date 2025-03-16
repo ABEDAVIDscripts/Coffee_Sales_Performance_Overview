@@ -567,7 +567,8 @@ DateTable = ADDCOLUMNS (
 <br>
 
 #### STEP 4:
-- Canvas Settings and Adjustments
+- Canvas Settings
+- Canvas Adjustments
 
 <br>
 
@@ -598,6 +599,18 @@ MoM Sales % Change =
 	DIVIDE([MoM Sales Difference], [Previous Month Sales], 0), 
 	BLANK() )	
 ```
+
+- Add visualization card, Add Total Sales on it. Then format the card
+
+- Create a new column for Month-Year:
+```DAX
+Month-Year = FORMAT(DateTable[Date], "MMM YYYY")
+```
+
+- Add slicer, Add  Month-Year column to the slicer
+
+
+
 
 #### 2. 
 
