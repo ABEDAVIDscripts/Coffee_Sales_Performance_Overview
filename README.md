@@ -533,14 +533,15 @@ GROUP BY 1,2,3;
 
 
 ## Power BI Solution Section: Visualization and Dashboard
-### STEP 1: Import and transform data
+### ********
+#### STEP 1: Import and transform data
 - In Transform Data, check for data quality under View Tab: using column quality and distribution
 - Close and apply
 - Set the transaction_time datatype to hh:nn:ss
 
 <BR>
 
-### STEP 2: Create A Date Table
+#### STEP 2: Create A Date Table
 ```DAX
 DateTable = ADDCOLUMNS (
 	CALENDAR ( MIN('YourDataTable'[Date]), MAX('YourDataTable'[Date]) ),
@@ -551,13 +552,52 @@ DateTable = ADDCOLUMNS (
 	"Weekday", FORMAT([Date], "dddd"),
 	"WeekdayNum", WEEKDAY([Date], 2) )
 ```
-[DateTable](https://drive.google.com/file/d/1rTnjm9BnLDKKuE60PFjlnxMw6zsyiohR/view?usp=sharing)
+[DateTable Image](https://drive.google.com/file/d/186cW2pPwho7sql_Oj3c-OhphYPD6x3tg/view?usp=sharing)
 
 
 <BR>
 
-### STEP 3: Data Modeling
+#### STEP 3: Data Modeling
 - Add a relationship between Date Table and Transactions table
 - Under Model View, connect the 2 tables
 - Drag the date in the Date Table on the transaction_date in Transactions Table
 - The relationship is Many to One.
+- [Data Modeling image](https://drive.google.com/file/d/19GwMOo-fvFcUcGCtDDDcRzwFo-L5fRoA/view?usp=sharing)
+
+<br>
+
+#### STEP 4:
+- Canvas Settings and Adjustments
+
+<br>
+
+
+
+### Business Questions: KPI Requirements
+
+#### 1. Total Sales Analysis with month-on-month increase or decrease in sales
+- create total sales measure
+```DAX
+Total Sales = SUMX(Transactions, Transactions[unit_price] * Transactions[transaction_qty])
+```
+
+- Create "Previous Month Sales" Measure
+```DAX
+Previous Month Sales = CALCULATE([Total Sales], PREVIOUSMONTH(DateTable[Date]))
+```
+
+- Create "MoM Sales Difference" Measure
+```DAX
+MoM Sales Difference = [Total Sales] - [Previous Month Sales]
+```
+
+- Create "MoM Sales % Change" Measure
+```DAX 
+MoM Sales % Change = 
+	IF( NOT(ISBLANK([Previous Month Sales])), 
+	DIVIDE([MoM Sales Difference], [Previous Month Sales], 0), 
+	BLANK() )	
+```
+
+#### 2. 
+
