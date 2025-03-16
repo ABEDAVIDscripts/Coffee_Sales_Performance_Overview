@@ -532,8 +532,9 @@ GROUP BY 1,2,3;
 <BR>
 
 
-## Power BI Solution Section: Visualization and Dashboard
-### ********
+## Power BI Solution Section
+
+### Canvas Configuration
 #### STEP 1: Import and transform data
 - In Transform Data, check for data quality under View Tab: using column quality and distribution
 - Close and apply
@@ -574,7 +575,7 @@ DateTable = ADDCOLUMNS (
 
 
 
-### Business Questions: KPI Requirements
+### Business Questions: KPI Section
 
 #### 1. Total Sales Analysis with month-on-month increase or decrease in sales
 - create total sales measure
@@ -606,11 +607,110 @@ MoM Sales % Change =
 ```DAX
 Month-Year = FORMAT(DateTable[Date], "MMM YYYY")
 ```
+- [Month-Year Image](https://drive.google.com/file/d/18F2lud-o5IxgGBuuONeQcrB03folpgi3/view?usp=sharing)
 
-- Add slicer, Add  Month-Year column to the slicer
+- Add slicer, Add Month-Year column to the slicer. Format and Sort the slicer
+
+- Total Sales KPI to display the MoM diff & percentage 
+```DAX
+KPI Total Sales = 
+	VAR MoM_Diff = [MoM Sales Difference]
+	VAR Mom_Percent = [MoM Sales % Change]
+	VAR CurrentMonth = SELECTEDVALUE('DateTable'[MonthNumb])
+
+	RETURN
+	IF(
+	CurrentMonth = 1,
+	BLANK(), 
+	FORMAT(MoM_Diff/1000, "0.0K") & " | " & FORMAT(mom_percent, "#0.0%") & " " & "MoM diff" & " " & "vs LM" )
+```
+
+- Create a card, drag on KPI Total Sales
+- Format the card to merge it with Total Sales Card
+
+<br>
+
+#### 2. Total Orders Analysis
+
+- Create Total orders measure
+```DAX
+	Total Orders = DISTINCTCOUNT(Transactions[transaction_id])
+```
+
+- Create the Previous Month Orders Measure
+```DAX
+	 Orders Previous Month = CALCULATE([Total Orders], DATEADD('DateTable'[Date], -1, MONTH) )
+```
+
+- Calculate the Month-over-Month (MoM) Difference
+```DAX
+	MoM Orders Difference = [Total Orders] - [Orders Previous Month]
+```
+
+- Calculate the Month-over-Month Percentage Change
+```DAX
+	MoM Order % Change = 
+	IF( NOT(ISBLANK([Orders Previous Month])), DIVIDE([MoM Orders Difference], [Orders Previous Month], 0), BLANK())
+```
+
+- Orders MoM KPI
+```DAX
+	KPI Total Orders = 
+		VAR MoM_Diff = [MoM Orders Difference]
+		VAR Mom_Percent = [MoM Order % Change]
+		VAR CurrentMonth = SELECTEDVALUE('DateTable'[MonthNum])
+		RETURN
+		IF( CurrentMonth = 1, BLANK(), 
+		MoM_Diff & " | " & FORMAT(mom_percent, "#0.0%") & " " & "MoM diff" & " " & "vs LM" )
+```
+
+- Add card, Add Total Orders on it. Then format the card
+- Add another card, drag on Orders MoM KPI
+- Format the card to merge it with Total Orders Card
+
+<br>
 
 
+#### 3. Total Quantity Sold Analysis
+
+- Create the Total Quantity Sold Measure
+```DAX
+	Total Quantity Sold = SUM(Transactions[transaction_qty])
+```
 
 
-#### 2. 
+- Create the Previous Month Quantity Sold Measure
+```DAX
+	Previous Month Quantity Sold = CALCULATE([Total Quantity Sold], DATEADD('DateTable'[Date], -1, MONTH))
+```
 
+- Calculate the Month-over-Month (MoM) Difference
+```DAX
+	MoM Quantity Difference = [Total Quantity Sold] - [Previous Month Quantity Sold]
+```
+
+- Calculate the Month-over-Month Percentage Change
+```DAX
+	MoM Quantity % Change = 
+	IF(
+		NOT(ISBLANK([Previous Month Quantity Sold])),
+		DIVIDE([MoM Quantity Difference], [Previous Month Quantity Sold], 0), BLANK() )
+```
+
+- Total Quantity mom KPI 
+```DAX
+	KPI Total Quantity = 
+		VAR MoM_Diff = [MoM Quantity Difference]
+		VAR Mom_Percent = [MoM Quantity % Change]
+		VAR CurrentMonth = SELECTEDVALUE('DateTable'[MonthNum])
+		RETURN
+		IF( CurrentMonth = 1, BLANK(), 
+		MoM_Diff & " | " & FORMAT(mom_percent, "#0.0%") & " " & "MoM Diff" & " " & "vs LM" )
+```
+
+- Add card, Add Total Quantity on it. Then format the card
+- Add another card, drag on KPI Total Quantity
+- Format the card to merge it with Total Quantity Card
+
+
+### SECTION B: CHARTS REQUIREMENTS
