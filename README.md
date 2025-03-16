@@ -714,3 +714,21 @@ KPI Total Sales =
 
 
 ### SECTION B: CHARTS REQUIREMENTS
+
+#### 1. Calender Heat Map
+
+- Create a Week Number Column
+```DAX
+	WeekNumber = WEEKNUM(DateTable[Date],2)
+```
+
+- Use a Matrix chart in the Visualization panel
+- Add weeknumber to Rows, weekday to columns and Days to values
+- Format and Sort weekday with column weekdaynum
+
+
+|| 
+use matrix, format it
+
+||
+add a new page for Tool tip, configure the tool tip
