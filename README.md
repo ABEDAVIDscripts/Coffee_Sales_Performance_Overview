@@ -37,6 +37,19 @@ This project aims to analyze a coffee shop's sales data using MySQL for data cle
  <br>
  <br>
 
+### Solution Sections
+The solution section is categorized into SQL Solution Section and Power BI Solution Section.
+
+The SQL Solution Section is splitted into 2 Parts:
+- Data Extraction and Cleaning
+- Exploratory Data Analysis on Business Questions:
+	- Section A: KPI'S Requirements
+ 	- Section B: Chart Requirements
+
+
+<br>
+<br>
+
 ### Business Questions
 #### SECTION A: KPI'S REQUIREMENTS
 
@@ -93,8 +106,8 @@ This project aims to analyze a coffee shop's sales data using MySQL for data cle
 <br>
 <br>
 
-## SQL Solution Section: Data Processing
-### Part A: Data Extraction and Cleaning
+## SQL Solution Section
+### Data Extraction and Cleaning
 
 #### 1: Create table coffee_sales
 ```SQL
@@ -195,7 +208,7 @@ SELECT * FROM COFFEE_WORKSHEET;
 <BR>
 
 
-### Part B: EXPLORATORY DATA ANALYSIS ON BUSINESS QUESTIONS
+### EXPLORATORY DATA ANALYSIS ON BUSINESS QUESTIONS
 ### SECTION A: KPI'S REQUIREMENTS
 
 #### 1. Total Sales Analysis
@@ -538,7 +551,7 @@ DateTable = ADDCOLUMNS (
 	"Weekday", FORMAT([Date], "dddd"),
 	"WeekdayNum", WEEKDAY([Date], 2) )
 ```
-![Screenshot (1692)](https://github.com/user-attachments/assets/3472420b-cf4d-4ee9-a132-1c086d0cdf9b)
+![DateTable](https://drive.google.com/file/d/1rTnjm9BnLDKKuE60PFjlnxMw6zsyiohR/view?usp=sharing)
 
 
 <BR>
