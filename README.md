@@ -723,12 +723,68 @@ KPI Total Sales =
 ```
 
 - Use a Matrix chart in the Visualization panel
-- Add weeknumber to Rows, weekday to columns and Days to values
+- Add weeknumber to Rows, weekday to Columns and Days to Values section
 - Format and Sort weekday with column weekdaynum
 
+- Add a new page for Tool tip, configure the tool tip
+- Connect the tooltip to the calenda heat map
 
-|| 
-use matrix, format it
+<BR>
+
+#### 2. Sales Analysis by Weekdays and Weekends
+
+- Create a weekday_weekend column
+```DAX
+	Weekday_Weekend = IF(WEEKDAY(DateTable[Date], 2) <= 5, "Weekday", "Weekend")
+```
+
+- Create a weekday_weekend column
+```DAX
+	Weekday_Weekend = IF(WEEKDAY(DateTable[Date], 2) <= 5, "Weekday", "Weekend")
+```
+
+- Add a donut chart for visual
+
+- Drag the Weekday_Weekend column into legend, total sales into values
+
+- Format and Style the chart
+
+
+<br>
+
+#### 3. Sales Analysis by Store Location
+
+- Add clustered bar chart; store_location on y-axis: and total sales on x-axis
+- Add a new value to x-axis to reflex the label, using new measure
+```DAX
+	Placeholder = 0
+```
+- Drag the Placeholder into x-axis, above total sales
+- Format and style the chart
+
+- create a new field for Label
+```DAX
+	Store Location Label = SELECTEDVALUE(Transactions[store_location]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
+```
+
+- Add "Label For Store Location" to the Placeholder' values in the Data Label section
+- Add "KPI Total Sales" to the Total Sales' values in the Data Label section 
+- Sort Total Sales by decending order
+
+<br>
+
+#### 4. Daily Sales Analysis with Average Line
+||
+Calculate the Average Daily Sales for the Selected Month
+	AVG Daily Sales = 
+	VAR TotalSales = [Total Sales] 
+	VAR TotalDays = DISTINCTCOUNT('DateTable'[Date]) 
+	RETURN 
+	IF(TotalDays > 0, TotalSales / TotalDays, BLANK())
 
 ||
-add a new page for Tool tip, configure the tool tip
+Add a line chart and format it.
+
+||
+Go to Add futher analyses to your visual - apply setting to - add line, change the name to "AVG Sales" - line - 
+value: fx, what field.. avg daily sales - color: gray - data label: on - color: off white
