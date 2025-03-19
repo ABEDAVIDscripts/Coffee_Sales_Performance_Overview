@@ -762,29 +762,83 @@ KPI Total Sales =
 - Drag the Placeholder into x-axis, above total sales
 - Format and style the chart
 
-- create a new field for Label
+- create a new measure Store Location Label
 ```DAX
 	Store Location Label = SELECTEDVALUE(Transactions[store_location]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
 ```
 
 - Add "Label For Store Location" to the Placeholder' values in the Data Label section
-- Add "KPI Total Sales" to the Total Sales' values in the Data Label section 
+- Add "KPI Total Sales" to the Total Sales' values in the Data Label section section to reflect MoM difference
 - Sort Total Sales by decending order
 
 <br>
 
 #### 4. Daily Sales Analysis with Average Line
-||
-Calculate the Average Daily Sales for the Selected Month
+
+- Create a new measure to calculate the Average Daily Sales for the Selected Month
+```DAX
 	AVG Daily Sales = 
 	VAR TotalSales = [Total Sales] 
 	VAR TotalDays = DISTINCTCOUNT('DateTable'[Date]) 
 	RETURN 
 	IF(TotalDays > 0, TotalSales / TotalDays, BLANK())
+```
 
-||
-Add a line chart and format it.
+- Add a line chart and format it.
 
-||
-Go to Add futher analyses to your visual - apply setting to - add line, change the name to "AVG Sales" - line - 
-value: fx, what field.. avg daily sales - color: gray - data label: on - color: off white
+- "Go to Add futher analyses to your visual"; add a Y-axis consant line and name to "AVG Sales" 
+- Under Line; click value to add condition "avg daily sales"
+
+
+<br>
+#### 5. Sales Analysis by Product Category
+
+- Add clustered bar chart; product category on y-axis and total sales on x-axis
+- Add the previously created measure "Placeholder" to x-axis to reflex the label
+- Drag the Placeholder into x-axis, above total sales
+- Format and style the chart
+
+- create a new measure Product Category Label
+```DAX
+	Product Category Label = 
+	SELECTEDVALUE(Transactions[product_category]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
+```
+
+- In Data Label; under Series select placeholder, In value field set the condition to "Product Category Label"
+
+  
+<br>
+
+#### 6. Top 10 Products by Sales
+
+- Just like Sales Analysis by Product Type, Add clustered bar chart
+- Product Type on y-axis, Total sales and Placeholder on x-axis
+- Format and style the chart
+
+- create a new measure Product Type Label
+```DAX
+	Product Type Label = 
+	SELECTEDVALUE(Transactions[product_type]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
+```
+
+- In Data Label; under Series select placeholder, In value field set the condition to "Product Type Label"
+
+
+<br>
+
+#### 7. Sales Analysis by Days and Hours
+
+- Use a Matrix chart in the Visualization panel
+- Create a new column "Transaction Hour", to extract Hours from Transaction Time
+- Add Transaction Hour to Rows, Weekday to Columns and Total Sales to Values section
+- Format the chart
+- Apply a condition to the Background color in the Cell Element section
+- Apply a condition to the Font color, apply the same color code used in 'background color"
+- Add a new page for "Tool Tip for Days/Hours", configure the tool tip
+- Connect the tooltip, search for "tooltip" under Format your visual
+- Turn On, go to "Page" select "Tool Tip for Days/Hours"
+
+
+#### Arrange your Visuals Cards
+
+
