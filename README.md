@@ -838,7 +838,8 @@ KPI Total Sales =
 - Connect the tooltip, search for "tooltip" under Format your visual
 - Turn On, go to "Page" select "Tool Tip for Days/Hours"
 
+<br>
 
-#### Arrange your Visuals Cards
+#### 8. Arrange your Visuals Cards
 
 
