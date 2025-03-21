@@ -16,6 +16,7 @@
 - Vertical alignment: middle
 - Canvas background - image fit : select fit
 
+<br>
 
 #### STEP 3: Create A Date Table
 ```DAX
@@ -259,6 +260,7 @@ KPI Total Sales =
 
 
 <br>
+
 #### 5. Sales Analysis by Product Category
 
 - Add clustered bar chart; product category on y-axis and total sales on x-axis
