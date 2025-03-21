@@ -182,6 +182,10 @@ KPI Total Sales =
 - Format the card to merge it with Total Quantity Card
 
 
+<br>
+<br>
+
+
 ### SECTION B: CHARTS REQUIREMENTS
 
 #### 1. Calender Heat Map
