@@ -4,7 +4,7 @@
 
 ### Project Overview
 
-This project aims to analyze a coffee shop's sales data using MySQL for data cleaning and processing, and Power BI for visualization. The objective is to extract KPIs, business insights such as sales trends, top-performing products, store performance, and sales patterns over time.
+This project aims to analyze a coffee shop's sales data using MySQL for data cleaning and processing, and Power BI for visualization. The objective is to extract business insights such as KPIs, sales trends, top-performing products, store performance, and sales patterns over time.
 
 <BR>
 
@@ -105,7 +105,7 @@ The solution section is categorized into SQL Solution Section and Power BI Solut
  	- Section B: Chart Requirements
 
 #### Power BI Solution Sectionis splitted into
-- Canvas Configuration
+- Data Importation and Canvas Configuration
 - Business Questions
 	- Section A: KPI'S Requirements
  	- Section B: Chart Requirements
