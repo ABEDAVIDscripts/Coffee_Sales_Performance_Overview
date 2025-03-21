@@ -1,4 +1,6 @@
-## Power BI Solution Section
+# Power BI Solution Section
+
+<BR>
 
 ### Canvas Configuration
 #### STEP 1: Import and transform data
@@ -11,7 +13,6 @@
 
 #### STEP 2: Canvas Configuration
 - Add canvas background
-- Change wallpaper color to black 
 - In canvas setting, set Type to custom: (H: 850, W: 1400) 
 - Vertical alignment: middle
 - Canvas background - image fit : select fit
@@ -45,9 +46,9 @@ DateTable = ADDCOLUMNS (
 
 
 
-### Business Questions: KPI Section
+## Business Questions: KPI Section
 
-#### 1. Total Sales Analysis with month-on-month increase or decrease in sales
+### 1. Total Sales Analysis with month-on-month increase or decrease in sales
 - create total sales measure
 ```DAX
 Total Sales = SUMX(Transactions, Transactions[unit_price] * Transactions[transaction_qty])
@@ -99,7 +100,7 @@ KPI Total Sales =
 
 <br>
 
-#### 2. Total Orders Analysis
+### 2. Total Orders Analysis
 
 - Create Total orders measure
 ```DAX
@@ -140,7 +141,7 @@ KPI Total Sales =
 <br>
 
 
-#### 3. Total Quantity Sold Analysis
+### 3. Total Quantity Sold Analysis
 
 - Create the Total Quantity Sold Measure
 ```DAX
@@ -186,9 +187,9 @@ KPI Total Sales =
 <br>
 
 
-### SECTION B: CHARTS REQUIREMENTS
+## SECTION B: CHARTS REQUIREMENTS
 
-#### 1. Calender Heat Map
+### 1. Calender Heat Map
 
 - Create a Week Number Column
 ```DAX
@@ -204,7 +205,7 @@ KPI Total Sales =
 
 <BR>
 
-#### 2. Sales Analysis by Weekdays and Weekends
+### 2. Sales Analysis by Weekdays and Weekends
 
 - Create a weekday_weekend column
 ```DAX
@@ -225,7 +226,7 @@ KPI Total Sales =
 
 <br>
 
-#### 3. Sales Analysis by Store Location
+### 3. Sales Analysis by Store Location
 
 - Add clustered bar chart; store_location on y-axis: and total sales on x-axis
 - Add a new value to x-axis to reflex the label, using new measure
@@ -246,7 +247,7 @@ KPI Total Sales =
 
 <br>
 
-#### 4. Daily Sales Analysis with Average Line
+### 4. Daily Sales Analysis with Average Line
 
 - Create a new measure to calculate the Average Daily Sales for the Selected Month
 ```DAX
@@ -265,7 +266,7 @@ KPI Total Sales =
 
 <br>
 
-#### 5. Sales Analysis by Product Category
+### 5. Sales Analysis by Product Category
 
 - Add clustered bar chart; product category on y-axis and total sales on x-axis
 - Add the previously created measure "Placeholder" to x-axis to reflex the label
@@ -283,7 +284,7 @@ KPI Total Sales =
   
 <br>
 
-#### 6. Top 10 Products by Sales
+### 6. Top 10 Products by Sales
 
 - Just like Sales Analysis by Product Type, Add clustered bar chart
 - Product Type on y-axis, Total sales and Placeholder on x-axis
@@ -300,7 +301,7 @@ KPI Total Sales =
 
 <br>
 
-#### 7. Sales Analysis by Days and Hours
+### 7. Sales Analysis by Days and Hours
 
 - Use a Matrix chart in the Visualization panel
 - Create a new column "Transaction Hour", to extract Hours from Transaction Time
@@ -314,7 +315,7 @@ KPI Total Sales =
 
 <br>
 
-#### 8. Arrange your Visuals Cards
-
+### 8. Arrange your Visuals Cards
+[Dashboard Image](https://drive.google.com/file/d/16eZEBd4j4CiSPdl-s_1K7YHK3vx86RoV/view?usp=sharing)
 <br>
 <br>
