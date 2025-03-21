@@ -258,7 +258,7 @@ GROUP BY 1,2,3;
 ```
 
 
-#### 2. categorize sales into Weekdays and Weekends Per Each Month 
+#### 2. Categorize sales into Weekdays and Weekends Per Each Month 
 
 ```SQL
 SELECT 
@@ -343,7 +343,7 @@ FROM coffee_worksheet
 GROUP BY 1,2;    
 ```
 
-#### 4B.  incorporate an average line on the chart to represent the average daily sale
+#### 4B. incorporate an average line on the chart to represent the average daily sale
 ```SQL
 WITH coffee_table AS
   (SELECT     
