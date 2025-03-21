@@ -129,7 +129,7 @@ SELECT
 FROM Monthly_table   ;
 ```
 
-1C. percentage difference in sales between the selected month and the previous month
+#### 1C. percentage difference in sales between the selected month and the previous month
 ``` SQL
 WITH monthly_table AS
   (SELECT
