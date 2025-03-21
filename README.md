@@ -34,24 +34,6 @@ This project aims to analyze a coffee shop's sales data using MySQL for data cle
   - product_type
   - product_details
 
- <br>
- <br>
-
-### Solution Sections
-The solution section is categorized into SQL Solution Section and Power BI Solution Section.
-
-#### The SQL Solution Section is splitted into 2 Parts:
-- Data Extraction and Cleaning
-- Exploratory Data Analysis on Business Questions:
-	- Section A: KPI'S Requirements
- 	- Section B: Chart Requirements
-
-#### Power BI Solution Sectionis splitted into
-- Canvas Configuration
-- Business Questions
-	- Section A: KPI'S Requirements
- 	- Section B: Chart Requirements
-
 
 <br>
 <br>
@@ -113,5 +95,22 @@ The solution section is categorized into SQL Solution Section and Power BI Solut
 <br>
 
 
+### Solution Sections
+The solution section is categorized into SQL Solution Section and Power BI Solution Section.
 
+#### The SQL Solution Section is splitted into 2 Parts:
+- Data Extraction and Cleaning
+- Exploratory Data Analysis on Business Questions:
+	- Section A: KPI'S Requirements
+ 	- Section B: Chart Requirements
+
+#### Power BI Solution Sectionis splitted into
+- Canvas Configuration
+- Business Questions
+	- Section A: KPI'S Requirements
+ 	- Section B: Chart Requirements
+
+
+<br> 
+<br> 
 
