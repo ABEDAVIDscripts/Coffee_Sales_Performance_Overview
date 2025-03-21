@@ -1,4 +1,4 @@
-SQL Solution Section
+## SQL Solution Section
 ### Data Extraction and Cleaning
 
 #### 1: Create table coffee_sales
