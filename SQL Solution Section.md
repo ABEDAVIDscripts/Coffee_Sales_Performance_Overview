@@ -17,7 +17,7 @@ CREATE TABLE coffee_sales
 	product_detail TEXT);
 ```
 
-##### Verify Table
+- Verify Table
 ```SQL
 SELECT * FROM coffee_sales;
 ```
@@ -37,7 +37,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;    
 ```
 
-##### Verify Import
+- Verify Import
 ```SQL
 SELECT * FROM coffee_sales;
 ```
@@ -46,13 +46,13 @@ DESCRIBE coffee_sales;
 ```
 <BR>
 
-#### 3: Create a Worksheet Table(to protect the raw file) and insert dataset
+#### 3: Create a Worksheet Table (to protect the raw file) and insert dataset
 
 ```SQL
 CREATE TABLE coffee_worksheet LIKE coffee_sales;
 ```
 
-##### verify table
+- verify table
 ```SQL
 DESCRIBE coffee_worksheet;
 ```
@@ -65,7 +65,7 @@ INSERT INTO coffee_worksheet
 SELECT * FROM coffee_sales;
 ```
 
-##### Verify dataset
+- Verify dataset
 ```SQL
 SELECT * FROM coffee_worksheet;
 ```
@@ -75,20 +75,20 @@ SELECT * FROM coffee_worksheet;
 #### 5: Data Cleaning
 #### Update transaction_time to TIME standard format and ALTER the datatype
 
-#### Step A: Update transaction time
+- Step A: Update transaction time
 ```SQL
 UPDATE coffee_worksheet
 SET 
 	transaction_time = STR_TO_DATE(transaction_time, '%H:%i:%s');
 ```
 
-#### Step B: Alter Datatype
+- Step B: Alter Datatype
 ```SQL
 ALTER TABLE coffee_worksheet
 MODIFY transaction_time TIME;
 ```
 
-##### verify changes
+- verify changes
 ```SQL
 DESCRIBE COFFEE_WORKSHEET;
 ```
