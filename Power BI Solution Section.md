@@ -319,3 +319,11 @@ KPI Total Sales =
 [Dashboard Image](https://drive.google.com/file/d/16eZEBd4j4CiSPdl-s_1K7YHK3vx86RoV/view?usp=sharing)
 <br>
 <br>
+
+### 9. Visual Presentation
+[**View**](https://drive.google.com/file/d/1wNbL7fot6IuS6cjn6MeJU5jjHPfhmzqh/view?usp=sharing)
+
+
+<BR>
+
+<br>
