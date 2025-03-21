@@ -147,6 +147,7 @@ FROM Monthly_table   ;
 ```
 
 <BR>
+<BR>
 
 #### 2. Total Order Analysis
 #### 2A. total number of orders for each respective month
@@ -195,6 +196,7 @@ FROM Order_table;
 ```
 
 <BR>
+<BR>
 
 #### 3: Total Quantity Sold Analysis
 #### 3A. total quantity sold for each respective month.
@@ -242,6 +244,8 @@ FROM Monthly_qty        ;
 ```
 
 <br>
+<BR>
+<BR>
 
 ### SECTION B : CHARTS REQUIREMENTS
 #### 1. The Sales, Order and Quantity for each day of the month
@@ -257,6 +261,7 @@ FROM coffee_worksheet
 GROUP BY 1,2,3;
 ```
 
+<BR>
 
 #### 2. Categorize sales into Weekdays and Weekends Per Each Month 
 
@@ -273,6 +278,7 @@ FROM coffee_worksheet
 GROUP BY 1,2,3;
 ```
 
+<BR>
 
 #### 3. Sales Analysis by Store Location:
 #### 3A. visualize sales data by different store locations.
@@ -331,6 +337,7 @@ FROM Lag_Table
 ORDER BY month_count, 2;
 ```
 
+<BR>
 
 #### 4. Daily Sales Analysis with Average Line:
 #### 4A. display daily sales for the selected month with a line chart.
@@ -385,6 +392,7 @@ FROM AVG_Table
 ORDER BY month_count, days;
 ```
 
+<BR>
 
 #### 5. Sales Analysis by Product Category
 ```SQL
@@ -396,6 +404,7 @@ GROUP BY 1
 ORDER BY 2 DESC;
 ```
 
+<BR>
 
 #### 6. Top 10 Products by Sales
 ```SQL
@@ -408,6 +417,7 @@ ORDER BY 2 DESC
 LIMIT 10;
 ```
 
+<BR>
 
 #### 7. Sales Analysis by Days and Hours
 ```sql
