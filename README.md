@@ -110,7 +110,6 @@ The solution section is categorized into SQL Solution Section and Power BI Solut
 	- Section A: KPI'S Requirements
  	- Section B: Chart Requirements
 
-<br> 
 
 #### View Solution Section files for detailed solution
 
