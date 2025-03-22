@@ -316,12 +316,12 @@ KPI Total Sales =
 <br>
 
 ### 8. Arrange your Visuals Cards
-[Dashboard Image](https://drive.google.com/file/d/16eZEBd4j4CiSPdl-s_1K7YHK3vx86RoV/view?usp=sharing)
+[Dashboard Image](https://drive.google.com/file/d/1nJY_WPxgNabddwGUbhSNF75PQZ2COn9n/view?usp=sharing)
 <br>
 <br>
 
 ### 9. Visual Presentation
-[**View**](https://drive.google.com/file/d/1wNbL7fot6IuS6cjn6MeJU5jjHPfhmzqh/view?usp=sharing)
+[**View**](https://drive.google.com/file/d/1tw2MqT5o5_MVQkP7Q-Vj_TrTh14wF6ri/view?usp=sharing)
 
 
 <BR>
