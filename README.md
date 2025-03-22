@@ -111,7 +111,7 @@ The solution section is categorized into SQL Solution Section and Power BI Solut
  	- Section B: Chart Requirements
 
 
-#### View Solution Section files for detailed solution
+#### View Solution Section files for step by step documentation
 
 <br>
 <br>
