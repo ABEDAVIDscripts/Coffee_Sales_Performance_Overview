@@ -316,7 +316,7 @@ KPI Total Sales =
 <br>
 
 ### 8. Arrange your Visuals Cards
-[Dashboard Image](https://drive.google.com/file/d/1nJY_WPxgNabddwGUbhSNF75PQZ2COn9n/view?usp=sharing)
+[Dashboard Image](https://drive.google.com/file/d/1Lp54t17TotEAoqDZ3F7cke-5LcovXX0r/view?usp=sharing)
 <br>
 <br>
 
