@@ -1,5 +1,4 @@
-# Coffee Sales with MySQL and Power BI
-
+# Coffee Sales Performance Overview & Strategic Insights
 <br>
 
 ### Project Overview
