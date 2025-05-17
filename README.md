@@ -95,7 +95,10 @@ This project aims to analyze a coffee shop's sales data using MySQL for data cle
 
 
 ### Solution Sections
-The solution section is categorized into SQL Solution Section and Power BI Solution Section.
+The solution section is categorized into 
+
+- SQL Solution Section and
+- Power BI Solution Section.
 
 <br>
 
@@ -534,7 +537,7 @@ GROUP BY 1,2,3;
 
 <BR>
 
-- [**View Visual Presentation**](https://drive.google.com/file/d/1ShFzo5dhZdqCopmjpB6eR4A2fXiNKhGR/view?usp=sharing)
+#### 8. [SQL Solution Visual Documentation](https://drive.google.com/file/d/1ShFzo5dhZdqCopmjpB6eR4A2fXiNKhGR/view?usp=sharing)
 
 <br>
 <br>
