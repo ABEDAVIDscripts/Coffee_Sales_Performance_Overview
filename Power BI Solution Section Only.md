@@ -1,4 +1,4 @@
-# Power BI Solution Section Only
+# Power BI Solution Section
 
 <BR>
 
